@@ -16,7 +16,7 @@ return new class extends Migration
             $table->dateTime('penjualan_tanggal');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('user-id')->on('m_user');
+            $table->foreign('user_id')->references('user_id')->on('m_user');
         });
     }
 
