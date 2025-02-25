@@ -18,10 +18,10 @@ class UserController extends Controller
         // ];
         // UserModel::insert($data); // Add data to m_user table
 
-        $data = [
-            'nama' => 'Pelanggan Pertama',
-        ];
-        UserModel::where('username', 'customer-1')->update($data); // Update data user
+        // $data = [
+        //     'nama' => 'Pelanggan Pertama',
+        // ];
+        // UserModel::where('username', 'customer-1')->update($data); // Update data user
 
         $user = UserModel::all(); // Get all data from table m_user
         return view('user', ['data' => $user]);
