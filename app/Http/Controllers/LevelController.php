@@ -199,11 +199,7 @@ class LevelController extends Controller
             } 
     
             $check = LevelModel::find($id); 
-            if ($check) { 
-                if(!$request->filled('password') ){
-                    $request->request->remove('password'); 
-                } 
-                
+            if ($check) {
                 $check->update($request->all()); 
                 return response()->json([ 
                     'status'  => true, 
