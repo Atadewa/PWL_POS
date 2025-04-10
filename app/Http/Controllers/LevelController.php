@@ -6,6 +6,7 @@ use App\Models\LevelModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use PhpOffice\PhpSpreadsheet\IOFactory;
 use Yajra\DataTables\Facades\DataTables;
 
 class LevelController extends Controller
@@ -255,5 +256,65 @@ class LevelController extends Controller
         $level = LevelModel::find($id);
 
         return view('level.show_ajax', ['level' => $level]);
+    }
+
+    public function import() 
+    { 
+        return view('level.import'); 
+    } 
+
+    public function import_ajax(Request $request) 
+    { 
+        if($request->ajax() || $request->wantsJson()){ 
+            $rules = [ 
+                'file_level' => ['required', 'mimes:xlsx', 'max:1024'] 
+            ]; 
+ 
+            $validator = Validator::make($request->all(), $rules); 
+            if($validator->fails()){ 
+                return response()->json([ 
+                    'status' => false, 
+                    'message' => 'Validasi Gagal', 
+                    'msgField' => $validator->errors() 
+                ]); 
+            } 
+ 
+            $file = $request->file('file_level'); 
+ 
+            $reader = IOFactory::createReader('Xlsx');
+            $reader->setReadDataOnly(true);
+            $spreadsheet = $reader->load($file->getRealPath());
+            $sheet = $spreadsheet->getActiveSheet();
+ 
+            $data = $sheet->toArray(null, false, true, true); 
+ 
+            $insert = []; 
+            if(count($data) > 1){ // jika data lebih dari 1 baris 
+                foreach ($data as $baris => $value) { 
+                    if($baris > 1){ // baris ke 1 adalah header, maka lewati 
+                        $insert[] = [ 
+                            'level_kode' => $value['A'], 
+                            'level_nama' => $value['B'], 
+                            'created_at' => now(), 
+                        ]; 
+                    } 
+                } 
+ 
+                if(count($insert) > 0){ 
+                    LevelModel::insertOrIgnore($insert);    
+                } 
+ 
+                return response()->json([ 
+                    'status' => true, 
+                    'message' => 'Data berhasil diimport' 
+                ]); 
+            } else { 
+                return response()->json([ 
+                    'status' => false, 
+                    'message' => 'Tidak ada data yang diimport' 
+                ]); 
+            } 
+        } 
+        return redirect('/'); 
     }
 }
