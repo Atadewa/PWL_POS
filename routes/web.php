@@ -70,6 +70,7 @@ Route::middleware(['auth'])->group(function(){
       Route::delete('/{id}', [LevelController::class, 'destroy']);
       Route::get('/import', [LevelController::class, 'import']);
       Route::post('/import_ajax', [LevelController::class, 'import_ajax']);
+      Route::get('/export_excel', [LevelController::class, 'export_excel']);
     });
   });
 
