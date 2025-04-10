@@ -66,6 +66,8 @@ Route::middleware(['auth'])->group(function(){
       Route::get('/{id}/delete_ajax', [LevelController::class, 'confirm_ajax']);
       Route::delete('/{id}/delete_ajax', [LevelController::class, 'delete_ajax']);
       Route::delete('/{id}', [LevelController::class, 'destroy']);
+      Route::get('/import', [LevelController::class, 'import']);
+      Route::post('/import_ajax', [LevelController::class, 'import_ajax']);
     });
   });
 
