@@ -6,7 +6,7 @@
             <h3 class="card-title">{{ $page->title }}</h3> 
             <div class="card-tools"> 
                 <button onclick="modalAction('{{ url('/user/import') }}')" class="btn btn-info">Import User</button> 
-                <a href="{{ url('/user/create') }}" class="btn btn-primary">Tambah Data</a> 
+                <a href="{{ url('/user/export_excel') }}" class="btn btn-primary"><i class="fa fa-file-excel"> Export User</i></a>  
                 <button onclick="modalAction('{{ url('/user/create_ajax') }}')" class="btn btn-success">Tambah Data (Ajax)</button> 
             </div> 
         </div> 
@@ -39,7 +39,7 @@
             <table class="table table-bordered table-sm table-striped table-hover" id="table-user"> 
             <thead> 
                 <tr>
-                  <th>ID</th>
+                  <th>No</th>
                   <th>Username</th>
                   <th>Nama</th>
                   <th>Level Pengguna</th>
@@ -63,9 +63,9 @@ data-keyboard="false" data-width="75%"></div>
         }); 
     } 
  
-var tableUser; 
+var dataUser; 
 $(document).ready(function(){ 
-    tableUser = $('#table-user').DataTable({ 
+    dataUser = $('#table-user').DataTable({ 
         processing: true, 
         serverSide: true, 
         ajax: { 
@@ -77,7 +77,7 @@ $(document).ready(function(){
             } 
         }, 
         columns: [{ 
-                data: "user_id",  
+                data: "DT_RowIndex",  
                 className: "text-center", 
                 width: "5%", 
                 orderable: false, 
@@ -112,12 +112,12 @@ $(document).ready(function(){
  
     $('#table-user_filter input').unbind().bind().on('keyup', function(e){ 
         if(e.keyCode == 13){ // enter key 
-            tableUser.search(this.value).draw(); 
+            dataUser.search(this.value).draw(); 
         } 
     }); 
  
     $('.filter_level').change(function(){ 
-        tableUser.draw(); 
+        dataUser.draw(); 
     }); 
 }); 
 </script> 
