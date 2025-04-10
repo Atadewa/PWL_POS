@@ -6,7 +6,7 @@
             <h3 class="card-title">{{ $page->title }}</h3> 
             <div class="card-tools"> 
                 <button onclick="modalAction('{{ url('/supplier/import') }}')" class="btn btn-info">Import Supplier</button> 
-                <a href="{{ url('/supplier/create') }}" class="btn btn-primary">Tambah Data</a> 
+                <a href="{{ url('/supplier/export_excel') }}" class="btn btn-primary"><i class="fa fa-file-excel"> Export Supplier</i></a>  
                 <button onclick="modalAction('{{ url('/supplier/create_ajax') }}')" class="btn btn-success">Tambah Data (Ajax)</button> 
             </div> 
         </div> 
@@ -20,7 +20,7 @@
           <table class="table table-bordered table-sm table-striped table-hover" id="table-supplier"> 
             <thead> 
               <tr>
-                <th>ID</th>
+                <th>No</th>
                 <th>Kode Supplier</th>
                 <th>Nama Supplier</th>
                 <th>Alamat Supplier</th>
@@ -44,9 +44,9 @@ data-keyboard="false" data-width="75%"></div>
         }); 
     } 
  
-var tableSupplier; 
+var dataSupplier; 
 $(document).ready(function(){ 
-    tableSupplier = $('#table-supplier').DataTable({ 
+    dataSupplier = $('#table-supplier').DataTable({ 
         processing: true, 
         serverSide: true, 
         ajax: { 
@@ -58,7 +58,7 @@ $(document).ready(function(){
             } 
         }, 
         columns: [{ 
-                data: "supplier_id",  
+                data: "DT_RowIndex",  
                 className: "text-center", 
                 width: "5%", 
                 orderable: false, 
@@ -93,7 +93,7 @@ $(document).ready(function(){
  
     $('#table-supplier_filter input').unbind().bind().on('keyup', function(e){ 
         if(e.keyCode == 13){ // enter key 
-            tableSupplier.search(this.value).draw(); 
+            dataSupplier.search(this.value).draw(); 
         } 
     }); 
 }); 
