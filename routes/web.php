@@ -48,6 +48,8 @@ Route::middleware(['auth'])->group(function(){
       Route::get('/{id}/delete_ajax', [UserController::class, 'confirm_ajax']);
       Route::delete('/{id}/delete_ajax', [UserController::class, 'delete_ajax']);
       Route::delete('/{id}', [UserController::class, 'destroy']);
+      Route::get('/import', [UserController::class, 'import']);
+      Route::post('/import_ajax', [UserController::class, 'import_ajax']);
     });
     
     Route::group(['prefix' => 'level'], function(){
