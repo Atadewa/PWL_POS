@@ -6,7 +6,7 @@
             <h3 class="card-title">{{ $page->title }}</h3> 
             <div class="card-tools"> 
                 <button onclick="modalAction('{{ url('/kategori/import') }}')" class="btn btn-info">Import Kategori</button> 
-                <a href="{{ url('/kategori/create') }}" class="btn btn-primary">Tambah Data</a> 
+                <a href="{{ url('/kategori/export_excel') }}" class="btn btn-primary"><i class="fa fa-file-excel"> Export Kategori</i></a>  
                 <button onclick="modalAction('{{ url('/kategori/create_ajax') }}')" class="btn btn-success">Tambah Data (Ajax)</button> 
             </div> 
         </div> 
@@ -20,7 +20,7 @@
           <table class="table table-bordered table-sm table-striped table-hover" id="table-kategori"> 
             <thead> 
               <tr>
-                <th>ID</th>
+                <th>No</th>
                 <th>Kode Kategori</th>
                 <th>Nama Kategori</th>
                 <th>Aksi</th>
@@ -43,9 +43,9 @@ data-keyboard="false" data-width="75%"></div>
         }); 
     } 
  
-var tableKategori; 
+var dataKategori; 
 $(document).ready(function(){ 
-    tableKategori = $('#table-kategori').DataTable({ 
+    dataKategori = $('#table-kategori').DataTable({ 
         processing: true, 
         serverSide: true, 
         ajax: { 
@@ -57,7 +57,7 @@ $(document).ready(function(){
             } 
         }, 
         columns: [{ 
-                data: "kategori_id",  
+                data: "DT_RowIndex",  
                 className: "text-center", 
                 width: "5%", 
                 orderable: false, 
@@ -86,7 +86,7 @@ $(document).ready(function(){
  
     $('#table-kategori_filter input').unbind().bind().on('keyup', function(e){ 
         if(e.keyCode == 13){ // enter key 
-            tableKategori.search(this.value).draw(); 
+            dataKategori.search(this.value).draw(); 
         } 
     }); 
 }); 
