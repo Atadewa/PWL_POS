@@ -115,6 +115,7 @@ Route::middleware(['auth'])->group(function(){
       Route::delete('/{id}', [SupplierController::class, 'destroy']);
       Route::get('/import', [SupplierController::class, 'import']);
       Route::post('/import_ajax', [SupplierController::class, 'import_ajax']);
+      Route::get('/export_excel', [SupplierController::class, 'export_excel']);
     });
   }); 
 
