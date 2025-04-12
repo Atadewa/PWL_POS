@@ -78,7 +78,7 @@
         <th class="text-center">Nama Barang</th> 
         <th class="text-center">Harga Beli</th> 
         <th class="text-center">Harga Jual</th> 
-        <th>Kategori</th> 
+        <th class="text-center">Kategori</th> 
       </tr> 
     </thead> 
     <tbody> 
