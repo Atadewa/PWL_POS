@@ -74,10 +74,10 @@
     <thead> 
       <tr> 
         <th class="text-center">No</th> 
-        <th>Kode Barang</th> 
-        <th>Nama Barang</th> 
-        <th class="text-right">Harga Beli</th> 
-        <th class="text-right">Harga Jual</th> 
+        <th class="text-center">Kode Barang</th> 
+        <th class="text-center">Nama Barang</th> 
+        <th class="text-center">Harga Beli</th> 
+        <th class="text-center">Harga Jual</th> 
         <th>Kategori</th> 
       </tr> 
     </thead> 
