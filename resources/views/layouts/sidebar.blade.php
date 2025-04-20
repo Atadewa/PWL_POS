@@ -1,5 +1,16 @@
 <!-- Sidebar -->
 <div class="sidebar"> 
+  <!-- User Panel -->
+  <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+    <div class="image">
+      <img src="{{ Auth::user()->profile_photo_url ? asset('storage/' . Auth::user()->profile_photo_url) : asset('storage/profile_photos/default.png') }}"
+      class="img-fluid img-circle elevation-2"
+      style="width: 35px; height: 35px; object-fit: cover;" alt="User Image">
+    </div>
+    <div class="info">
+        <a href="{{ url('profile/') }}" class="d-block">{{ Auth::user()->nama }}</a>
+    </div>
+  </div> 
   <!-- SidebarSearch Form --> 
   <div class="form-inline mt-2"> 
     <div class="input-group" data-widget="sidebar-search"> 
