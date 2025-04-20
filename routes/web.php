@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
@@ -30,6 +31,13 @@ Route::post('register', [AuthController::class, 'postRegister']);
 
 Route::middleware(['auth'])->group(function(){
   Route::get('/',[WelcomeController::class, 'index']);
+
+  Route::group(['prefix' => 'profile'], function(){
+    Route::get('/',[ProfileController::class, 'index']);
+    Route::get('/edit',[ProfileController::class, 'edit']);
+    Route::put('/update/{id}', [ProfileController::class, 'update']);
+    Route::put('/photo/{id}', [ProfileController::class, 'delete']);
+  });
   
   Route::middleware(['authorize:ADM'])->group(function(){
     Route::group(['prefix' => 'user'], function(){
