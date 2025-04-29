@@ -21,6 +21,35 @@
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
 
   @stack('css')
+  <style>
+    .sidebar-mini.sidebar-collapse .main-sidebar .user-panel {
+      display: flex;
+      justify-content: left;
+      align-items: left;
+      height: 50px;
+      transition: none !important;
+    }
+
+    .sidebar-mini.sidebar-collapse .main-sidebar .user-panel .image {
+      margin: 0;
+      transition: none !important;
+    }
+
+    .sidebar-mini.sidebar-collapse .main-sidebar .user-panel .image img {
+      width: 35px !important;
+      height: 35px !important;
+      object-fit: cover;
+      border-radius: 50% !important;
+      display: block;
+      transition: none !important;
+    }
+
+    .sidebar-mini.sidebar-collapse .main-sidebar .user-panel .info {
+      display: none !important;
+      transition: none !important;
+    }
+    
+  </style>
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
