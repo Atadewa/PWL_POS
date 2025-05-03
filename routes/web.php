@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
@@ -22,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::post('/register', RegisterController::class)->name('register');
 
 Route::pattern('id', '[0-9]+');
 
