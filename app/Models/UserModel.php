@@ -13,11 +13,13 @@ class UserModel extends Authenticatable implements JWTSubject
 {
     use HasFactory;
 
-    public function getJWTIdentifier(){
+    public function getJWTIdentifier()
+    {
         return $this->getKey();
     }
 
-    public function getJWTCustomClaims(){
+    public function getJWTCustomClaims()
+    {
         return [];
     }
 
@@ -47,10 +49,10 @@ class UserModel extends Authenticatable implements JWTSubject
         return $this->level->level_kode;
     }
 
-    protected function image(): Attribute 
+    protected function image(): Attribute
     {
-        return Attribute::make( 
-            get: fn ($image) => url('/storage/posts/' . $image), 
-        ); 
+        return Attribute::make(
+            get: fn($image) => $image ? url('/storage/profile_photos/' . $image) : null,
+        );
     }
 }
