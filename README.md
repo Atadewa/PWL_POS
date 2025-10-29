@@ -56,6 +56,8 @@ PWL POS (Point of Sale) adalah sistem manajemen penjualan berbasis web yang dira
 
 ### Backend
 
+<div align="center">
+
 ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
 ![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
@@ -74,6 +76,8 @@ PWL POS (Point of Sale) adalah sistem manajemen penjualan berbasis web yang dira
 ![NPM](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
+
+</div>
 
 ## 🚀 Instalasi
 
